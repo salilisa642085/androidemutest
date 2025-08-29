@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Android Emulator in Browser</title>
+  <script src="core/rfb.js"></script>
+  <style>
+    body,html { margin:0;padding:0;height:100%;background:#000; }
+    #screen { width:100%;height:100%;display:block; }
+  </style>
+</head>
+<body>
+  <canvas id="screen"></canvas>
+  <script>
+    const rfb = new RFB(document.getElementById('screen'),
+      (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/websockify');
+    rfb.viewOnly = false; // interactive
+    rfb.scaleViewport = true;
+  </script>
+</body>
+</html>
